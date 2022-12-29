@@ -163,6 +163,7 @@ public class ClientFrame extends JFrame implements ActionListener{
 			
 		} else if (e.getSource() == downloadFileButton) {   //download button
 			try {
+				socket = new Socket(host, port);
 				if (list.getSelectedIndex() != -1) {
 					String fileName = list.getSelectedValue();
 					System.out.println("Da chon file "+fileName);
@@ -202,11 +203,16 @@ public class ClientFrame extends JFrame implements ActionListener{
 			}
 		} else if (e.getSource() == deleteFileButton) {   // delete button
 			try {
+				socket = new Socket(host, port);
 				if (list.getSelectedIndex() != -1) {
 					String fileName = list.getSelectedValue();
 					String mess = "DELETE--"+fileName;
+					//send
 					SendObjectClient soc = new SendObjectClient(socket, mess);
 					soc.start();
+					//receive
+					ReceiveObjectClient roc = new ReceiveObjectClient(socket);
+					roc.start();
 				} else {
 					showMessageDialog("Vui long chon file de download", JOptionPane.PLAIN_MESSAGE);
 				}

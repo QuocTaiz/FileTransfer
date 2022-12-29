@@ -93,8 +93,8 @@ class ReceiveObjectServer extends Thread{
 			if (deleteFile(fileName)) {
 				mess = "Xoa thanh cong!";
 			} else mess = "Xoa khong thanh cong!";
-//			SendObjectServer sos = new SendObjectServer(socket, mess);
-//			sos.start();
+			SendObjectServer sos = new SendObjectServer(socket, mess);
+			sos.start();
 		}
 	}
 	
