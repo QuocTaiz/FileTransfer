@@ -69,6 +69,7 @@ public class ClientFrame extends JFrame implements ActionListener{
 			
 					
 			list = new JList<>();
+			listScrollPane.setViewportView(list);
 	
 			JButton img = new JButton();
 			img.setBounds(415, 20, 200, 200);
@@ -124,10 +125,7 @@ public class ClientFrame extends JFrame implements ActionListener{
 			getContentPane().add(LogLabel);
 			this.setVisible(true);
 			
-			// error
-//			socket = new Socket(host, port);
-//			ReceiveObjectClient roc = new ReceiveObjectClient(socket);
-//			roc.start();
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -230,6 +228,7 @@ public class ClientFrame extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 	}
+
 
 
 	public void showMessageDialog(String mess, int type) {
